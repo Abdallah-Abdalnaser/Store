@@ -1,0 +1,495 @@
+/*start global */
+:root {
+  --main-color:#2196f3;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background-color: #eee;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+}
+
+::-webkit-scrollbar-track {
+  background-color:white;
+}
+
+.contaner {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* small */
+@media (min-width:768px) {
+  .contaner {
+    width: 750px;
+  }
+}
+
+/* meduim */
+@media (min-width:992px) {
+  .contaner {
+    width: 980px;
+  }
+}
+
+/* large */
+@media (min-width:1200px) {
+  .contaner {
+    width: 1170px;
+  }
+}
+
+#loading {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#loading .imgloading {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eee;
+  width: fit-content;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid var(--main-color);
+  border-left-color: transparent;
+  animation: loading 3s linear infinite;
+}
+
+#loading img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 80px;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(360deg);
+  }
+}
+
+.GridSystem {
+  display: grid !important;
+  place-items: center;
+  grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+  gap: 25px;
+}
+
+.GridSystem .card {
+  margin: 0!important;
+  width: 100% !important;
+}
+
+/* end global */
+/* start header */
+header {
+  position: sticky;
+  top: 0%;
+  box-shadow: 0px 1px 20px #e0e0e0c7,0px 3px 30px  #eeeeee3a;
+  z-index: 100;
+  background-color: white;
+}
+
+header .contaner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .contaner h1 {
+  margin: 0px;
+}
+
+header .contaner h1 a {
+  text-decoration: none;
+  color: var(--main-color);
+  font-size: 28px;
+}
+
+header .contaner .links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header .contaner .links > i {
+  font-size: 20px;
+  padding: 25px 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: none;
+}
+
+header .contaner .links > i:hover {
+  color: var(--main-color);
+}
+
+header .contaner .links > ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+}
+
+header .contaner .links > ul > li {
+  position: relative;
+  transition: 0.3s;
+}
+
+header .contaner .links > ul > li::before {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 0px;
+  background-color: var(--main-color);
+  top: 0px;
+  left: 0px;
+  transition:width 0.3s ;
+}
+
+header .contaner .links > ul > li:hover {
+  background-color: #fafafa;
+}
+
+header .contaner .links > ul li:hover::before {
+  width: 100%;
+}
+
+header .contaner .links > ul > li > a {
+  text-decoration: none;
+  display: block;
+  padding: 25px 20px;
+  color: black;
+  font-weight: 600;
+}
+
+header .contaner .links > ul > li:nth-child(2) {
+  cursor: pointer;
+  position: relative;
+  padding: 25px 20px;
+}
+
+header .contaner .links > ul > li:nth-child(2)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+  transition:border-color 0.3s;
+}
+
+header .contaner .links > ul > li:nth-child(2):hover::after {
+  border-color: var(--main-color) transparent transparent transparent;
+}
+
+header .contaner .links ul li:nth-child(2) span {
+  transition: color 0.3s;
+  font-weight: 600;
+}
+
+header .contaner .links > ul > li:nth-child(2):hover span {
+  color: var(--main-color);
+}
+
+header .contaner .links ul li:nth-child(2) ul {
+  position: absolute;
+  top: 98%;
+  left: 0%;
+  width: 100%;
+  transform-origin: top center;
+  transform: rotateX(90deg);
+  list-style: none;
+  background-color: white;
+  z-index: 10;
+  transition:transform 0.3s ;
+}
+
+header .contaner .links ul li:nth-child(2) ul li a {
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  color: black;
+  z-index: 2;
+  position: relative;
+}
+
+header .contaner .links ul li:nth-child(2) ul li a::before {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  width: 0%;
+  background-color: #fafafa;
+  z-index: -1;
+  transition:width 0.3s;
+}
+
+header .contaner .links ul li:nth-child(2) ul li a:hover::before {
+  width: 100%;
+}
+
+header .contaner .links .card {
+  margin-left: 15px;
+}
+
+header .contaner .links .card i {
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+header .contaner .links .card i:hover {
+  color: var(--main-color);
+}
+
+header .contaner .links .card .purchases {
+  position: absolute;
+  background-color: white;
+  padding: 17px 20px;
+  border: 1px dashed var(--main-color);
+  right: 0%;
+  top: 100%;
+  width: 30%;
+  transform-origin: top center;
+  transform: rotateX(90deg);
+  transition:0.3s ;
+}
+
+header .contaner .links .card .purchases p {
+  color: var(--main-color);
+  font-weight: 500;
+  text-align: center;
+}
+
+@media (max-width:700px) {
+  header .contaner {
+    position: relative;
+  }
+  header .contaner .links i {
+    display: block;
+  }
+  header .contaner .links > ul {
+    position: absolute;
+    left: 0px;
+    top: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background-color: white;
+    transform-origin: top center;
+    transform: rotateX(90deg);
+    z-index: 9;
+    transition: 0.3s;
+  }
+  header .contaner .links > ul > li {
+    width: 100%;
+  }
+  header .contaner .links .card {
+    margin-left: 0px;
+  }
+  header .contaner .links ul li:nth-child(2) ul li a {
+    padding-left: 41px;
+  }
+  header .contaner .links .card .purchases {
+    width: 50%;
+  }
+}
+/* end header */
+/* start product section */
+.product {
+  margin-top: 55px;
+}
+
+.product:first-of-type {
+  margin-top: 30px;
+}
+
+.product:last-of-type {
+  margin-bottom: 15px;
+}
+
+.product .contaner {
+  position: relative;
+}
+
+.product .contaner h1 {
+  position: relative;
+  font-size: 25px;
+  margin: 0px;
+  padding: 4px 10px 4px 15px;
+  background-color: rgba(204, 204, 204, 0.397);
+  width: fit-content;
+}
+
+.product .contaner h1::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 4px;
+  height: 100%;
+  background-color: var(--main-color);
+}
+
+.product .contaner .cards {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  overflow-y:hidden;
+}
+
+.product .contaner .cards::-webkit-scrollbar {
+  height: 0px;
+}
+
+.product .contaner .cards .card {
+  background-color: white;
+  width: fit-content;
+  flex-shrink: 0;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px rgba(121, 121, 121, 0.267);
+  margin: 0px 10px;
+  height: fit-content;
+  transition: 0.3s;
+}
+
+.product .contaner .cards .card:first-of-type {
+  margin-left: 0px;
+}
+
+.product .contaner .cards .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 3px 3px 10px rgba(121, 121, 121, 0.37);
+}
+
+.product .contaner .cards .card .image {
+  width: fit-content;
+  padding: 37px 0px;
+  margin: 0px auto 10px auto;
+}
+
+.product .contaner .cards .card .image a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product .contaner .cards .card .image a img {
+  max-width: 55%;
+  transition: 0.3s;
+}
+
+.product .contaner .cards .card:hover .image a img {
+  transform: scale(1.1);
+}
+
+.product .contaner .cards .card p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product .contaner .cards .card p a {
+  font-size: 17px;
+  text-decoration: none;
+  color: var(--main-color);
+  font-weight: 600;
+}
+
+.product .contaner .cards .card span {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.product .contaner .cards .card a button {
+  background-color: var(--main-color);
+  border: 0px;
+  margin-top: 10px;
+  padding: 10px 0px;
+  width: 100%;
+  cursor: pointer;
+  color: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  transition: 0.3s;
+}
+
+.product .contaner .cards .card a button:hover {
+  background-color: #2070b1;
+}
+
+.product .contaner .cards .card a {
+  text-decoration: none;
+}
+
+.product .contaner .cards i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 56%;
+  transform: translateY(-56%);
+  font-size: 35px;
+  background-color: rgba(221, 221, 221, 0.795);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.product .contaner .cards i:hover {
+  background-color: rgba(189, 184, 184, 0.795);
+}
+
+.product .contaner .cards i:first-of-type {
+  left: -2%;
+}
+
+.product .contaner .cards i:last-of-type {
+  right: -1%;
+}
+
+@media (max-width:812px) {
+  .product .contaner .cards i {
+    display: none;
+  }
+}
+/* end product section */
