@@ -4,16 +4,10 @@ let ulMenu = document.querySelector("header .contaner .links ul li:nth-child(2) 
 let bar = document.querySelector("header .contaner .links > i");
 let cart = document.querySelector("header .contaner .links .card i");
 let purchases = document.querySelector("header .contaner .links .card .purchases");
-let loading = document.getElementById("loading")
+let loading = document.getElementById("loading");
 //loading
 window.addEventListener("load",()=>{
   loading.style.display="none";
-  if (innerWidth <=811) {
-    clearInterval(move);
-    clearInterval(move2);
-    clearInterval(move3);
-    clearInterval(move4);
-  }
 });
 //menu
 window.addEventListener("click",function(i){
@@ -63,7 +57,7 @@ window.addEventListener("resize",function(){
   };
 });
 // cart Shopping
-document.addEventListener("click",function(i) {
+cart.addEventListener("click",function(i) {
   if (i.target.classList.contains("fa-cart-shopping")) {
     if (!i.target.classList.contains("showCart")) {
       purchases.style.transform="rotate(0deg)";
@@ -80,103 +74,194 @@ document.addEventListener("click",function(i) {
     cart.classList.toggle("showCart");
   }
 });
-//icon angle
-let cards = document.querySelectorAll(".product .contaner .cards");
-let cardsArray=Array.from(cards);
-// console.log(cardsArray);
-document.addEventListener("click",function(e) {
-  if (e.target.className === "fa-solid fa-angle-left one") {
-    cardsArray[0].scrollBy({
-      left:-290
-    });
-    clearInterval(move);
-  } else if (e.target.className === "fa-solid fa-angle-right one") {
-    cardsArray[0].scrollBy({
-      left:290
-    });
-    clearInterval(move);
-  } else if (e.target.className === "fa-solid fa-angle-left two") {
-      cardsArray[1].scrollBy({
-      left:-290
-    });
-    clearInterval(move2);
-  } else if (e.target.className === "fa-solid fa-angle-right two") {
-      cardsArray[1].scrollBy({
-      left:290
-    });
-    clearInterval(move2);
-  } else if (e.target.className === "fa-solid fa-angle-left three") {
-      cardsArray[2].scrollBy({
-      left:-290
-    });
-    clearInterval(move3);
-  } else if (e.target.className === "fa-solid fa-angle-right three") {
-      cardsArray[2].scrollBy({
-      left:290
-    });
-    clearInterval(move3);
-  } else if (e.target.className === "fa-solid fa-angle-left four") {
-      cardsArray[3].scrollBy({
-      left:-290
-    });
-    clearInterval(move4);
-  } else if (e.target.className === "fa-solid fa-angle-right four") {
-      cardsArray[3].scrollBy({
-      left:290
-    });
-    clearInterval(move4);
-  };
-});
-let move = setInterval(function(){
-  if ((cardsArray[0].scrollLeft + cardsArray[0].clientWidth) < cardsArray[0].scrollWidth) {
-    cardsArray[0].scrollBy({
-      left:290
-    });
-  }else {
-    cardsArray[0].scrollBy({
-      left:-1730
-    });
-  };
-},3000);
-let move2 = setInterval(function(){
-  if ((cardsArray[1].scrollLeft + cardsArray[1].clientWidth) < cardsArray[1].scrollWidth) {
-    cardsArray[1].scrollBy({
-      left:290
-    });
-  }else {
-    cardsArray[1].scrollBy({
-      left:-1730
-    });
-  };
-},3200);
-let move3 = setInterval(function(){
-  if ((cardsArray[2].scrollLeft + cardsArray[2].clientWidth) < cardsArray[2].scrollWidth) {
-    cardsArray[2].scrollBy({
-      left:290
-    });
-  }else {
-    cardsArray[2].scrollBy({
-      left:-1730
-    });
-  };
-},3400);
-let move4 = setInterval(function(){
-  if ((cardsArray[3].scrollLeft + cardsArray[3].clientWidth) < cardsArray[3].scrollWidth) {
-    cardsArray[3].scrollBy({
-      left:290
-    });
-  }else {
-    cardsArray[3].scrollBy({
-      left:-1730
-    });
-  };
-},3600);
-
-window.addEventListener("resize",function() {
-  if (innerWidth <=811) {
-    clearInterval(move);
-    clearInterval(move2);
-    clearInterval(move3);
-    clearInterval(move4);
+// Card shopping
+// addCard Button
+let addCard = document.querySelectorAll(".product .contaner .cards .card button");
+let addCardArray = Array.from(addCard);
+// cards
+let Cards = document.querySelectorAll(".product .contaner .cards .card button");
+let CardsArray = Array.from(Cards);
+// All productName in page 
+let productName = document.querySelectorAll(".product .contaner .cards .card p a");
+let productNameArray = Array.from(productName);
+// All price in page 
+let price = document.querySelectorAll(".product .contaner .cards .card span");
+let priceArray = Array.from(price);
+// All src(img) in page 
+let srcImg = document.querySelectorAll(".product .contaner .cards .card .image a img");
+let srcImgArray = Array.from(srcImg);
+//div
+let div = document.querySelector("header .contaner .links .card .purchases")
+// Array that will save Object
+let Chosse = [];
+//check if there is data in local storage or not to update the Array (chosse)
+if (localStorage.getItem("product")) {
+  Chosse = JSON.parse(localStorage.getItem("product"))
+};
+// getDataFromLocalStorage
+getfromlocalstorage();
+//if the card is empty you will see (the card is empty)
+if (Chosse.length === 0) {
+  div.innerHTML="";
+  let p =document.createElement("p");
+  p.innerHTML="Your Card Is Empity";
+  div.appendChild(p);
+}
+if (Chosse.length === 0) {
+  document.getElementById("NOP").style.display="none";
+} else {
+  document.getElementById("NOP").style.display="flex";
+}
+//Delet product
+div.addEventListener("click",function(e){
+  if (e.target.classList.contains("del")) {
+    if (Chosse.length === 0) {
+      document.getElementById("NOP").style.opacity="0";
+    }
+    // remove from localstorage
+    let li = e.target.parentElement;
+    DeletLocalStorage(li.parentElement.getAttribute("data-id"));
+    // remove from body
+    e.target.parentElement.remove();
+    document.getElementById("NOP").innerHTML=Chosse.length;
+    document.getElementById("delete").play();
+    if (Chosse.length === 0) {
+      document.getElementById("NOP").style.display="none";
+    } else {
+      document.getElementById("NOP").style.display="flex";
+    }
+  }
+  //if the card is empty you will see (the card is empty)
+  if (Chosse.length === 0) {
+    div.innerHTML="";
+    let p =document.createElement("p");
+    p.innerHTML="Your Card Is Empity";
+    div.appendChild(p);
   }
 });
+// looping in all card 
+addCardArray.forEach(function(i,index) {
+  i.onclick=function () {
+    document.getElementById("add").play();
+    let price = priceArray[index].innerHTML.slice(0,(priceArray[index].innerHTML.length - 3));
+    addProductToCard(productNameArray[index].innerHTML,price,srcImgArray[index].getAttribute("src"));
+  }
+});
+function addProductToCard(productName,productPrice,imgSrc) {
+  //create Object
+  let yourChosse ={
+    id:Date.now(),
+    pName:productName,
+    pPrice:productPrice,
+    pImg:imgSrc,
+    pNumber:1
+  };
+  if (Chosse.length === 0) {
+    // addObjectToArray
+    Chosse.push(yourChosse);
+    // createElementIBody
+    addToBody(Chosse);
+    // addtolocalstorage
+    addtolocalstorage(Chosse);
+  }else {
+    for (let i = 0; i < Chosse.length; i++) {
+      if (Chosse[i].pName === yourChosse.pName) {
+        yourChosse.pNumber = (Chosse[i].pNumber + yourChosse.pNumber);
+        yourChosse.pPrice=(Number(Chosse[i].pPrice) + Number(yourChosse.pPrice));
+        Chosse.splice(i,1);
+        // addObjectToArray
+        Chosse.push(yourChosse);
+        // createElementIBody
+        addToBody(Chosse);
+        // addtolocalstorage
+        addtolocalstorage(Chosse);
+        break;
+      };
+    };
+    if (yourChosse.pNumber == 1) {
+      // addObjectToArray
+      Chosse.push(yourChosse);
+      // createElementIBody
+      addToBody(Chosse);
+      // addtolocalstorage
+      addtolocalstorage(Chosse);
+    }
+  }
+}
+// createElementIBody
+function addToBody(Array) {
+  div.innerHTML="";
+  Array.forEach(function (task){
+    let header=document.createElement("h3");
+    header.appendChild(document.createTextNode(task.pName));
+    let paragraph=document.createElement("p");
+    paragraph.appendChild(document.createTextNode(task.pPrice));
+    let incDec = document.createElement("div");
+    incDec.setAttribute("class","in-dec");
+    let span1 = document.createElement("span");
+    span1.innerHTML="+";
+    let span2 = document.createElement("span");
+    span2.innerHTML=task.pNumber;
+    let span3 = document.createElement("span");
+    span3.innerHTML="-";
+    incDec.appendChild(span1);
+    incDec.appendChild(span2);
+    incDec.appendChild(span3);
+    let detail = document.createElement("div");
+    detail.setAttribute("class","detail");
+    detail.appendChild(header);
+    detail.appendChild(paragraph);
+    detail.appendChild(incDec);
+    let img = document.createElement("img");
+    img.setAttribute("src",task.pImg);
+    let choose = document.createElement("div");
+    choose.setAttribute("class","choose");
+    choose.appendChild(img);
+    choose.appendChild(detail);
+    let Delete = document.createElement("span");
+    Delete.setAttribute("class","del")
+    Delete.innerHTML="x";
+    let ul = document.createElement("ul");
+    ul.setAttribute("data-id",task.id)
+    let li = document.createElement("li");
+    li.appendChild(choose);
+    li.appendChild(Delete);
+    ul.appendChild(li);
+    div.prepend(ul);
+  });
+  let link = document.createElement("a");
+  link.innerHTML="Checkout";
+  link.setAttribute("href","#");
+  let btn = document.createElement("button");
+  btn.appendChild(link);
+  div.appendChild(btn);
+  // console.log(Chosse.length)
+  document.getElementById("NOP").innerHTML=Chosse.length;
+  if (Chosse.length === 0) {
+    document.getElementById("NOP").style.display="none";
+  } else {
+    document.getElementById("NOP").style.display="flex";
+  }
+
+}
+
+// addtolocalstorage
+function addtolocalstorage(Chosse) {
+  window.localStorage.setItem("product",JSON.stringify(Chosse));
+};
+//get element from localstorage 
+function getfromlocalstorage(){ 
+  let data = window.localStorage.getItem("product")
+  if(data){
+    let product =JSON.parse(data);
+    addToBody(product);
+  };
+};
+// DeletFromLocalStorage
+function DeletLocalStorage(taskid){
+  // filder valueArray
+  Chosse = Chosse.filter(function(e){
+    return e.id != taskid;
+  });
+  addtolocalstorage(Chosse);
+};
