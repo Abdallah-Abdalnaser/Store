@@ -110,6 +110,99 @@ body {
   width: 100% !important;
 }
 
+.purchases {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.purchases ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.purchases ul li .choose {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.purchases ul li > span {
+  font-size: 18px;
+  background-color: var(--main-color);
+  color: white;
+  padding:5px 10px;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:background-color 0.3s;
+}
+
+.purchases ul li > span:hover {
+  background-color: #1e5d91;
+}
+
+
+.purchases ul li {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.purchases ul li .choose img {
+  width: 100px;
+}
+
+.purchases ul li .choose .detail {
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+.purchases ul li .choose .detail h3 {
+  color: var(--main-color);
+  margin-bottom: 5px;
+}
+
+.purchases ul li .choose .detail .in-dec {
+  margin-top: 10px;
+}
+
+.purchases ul li .choose .detail .in-dec span:first-of-type,
+.purchases ul li .choose .detail .in-dec span:last-of-type {
+  background-color: var(--main-color);
+  color: white;
+  padding: 0px 10px;
+  cursor: pointer;
+  transition:background-color 0.3s ;
+}
+
+.purchases ul li .choose .detail .in-dec span:first-of-type:hover,
+.purchases ul li .choose .detail .in-dec span:last-of-type:hover {
+  background-color: #1e5d91;
+}
+
+.purchases ul li .choose .detail .in-dec span:nth-child(2) {
+  background-color: #eee;
+  padding: 0px 10px;
+}
+
+.purchases button {
+  background-color: var(--main-color);
+  border: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.purchases button a {
+  text-decoration: none;
+  display: block;
+  padding: 10px 15px;
+  float: right;
+  width: 100%;
+  border-radius: 5px;
+  color: white;
+}
 /* end global */
 /* start header */
 header {
@@ -265,11 +358,39 @@ header .contaner .links ul li:nth-child(2) ul li a:hover::before {
 
 header .contaner .links .card {
   margin-left: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+header .contaner .links .card > span:first-of-type {
+  position: absolute;
+  top: 6px;
+  right: 1px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 12px;
+  background-color: red;
+  color: white;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  transition: 0.3s;
 }
 
 header .contaner .links .card i {
   cursor: pointer;
+  font-size: 22px;
   transition: color 0.3s;
+}
+
+header .contaner .links .card > span:last-of-type {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--main-color);
 }
 
 header .contaner .links .card i:hover {
@@ -283,16 +404,22 @@ header .contaner .links .card .purchases {
   border: 1px dashed var(--main-color);
   right: 0%;
   top: 100%;
-  width: 30%;
+  width: 40%;
   transform-origin: top center;
   transform: rotateX(90deg);
   transition:0.3s ;
 }
 
-header .contaner .links .card .purchases p {
+header .contaner .links .card .purchases > p {
   color: var(--main-color);
   font-weight: 500;
   text-align: center;
+}
+
+@media (max-width:992px) {
+  header .contaner .links .card .purchases {
+    width: 53%;
+  }
 }
 
 @media (max-width:700px) {
@@ -325,7 +452,7 @@ header .contaner .links .card .purchases p {
     padding-left: 41px;
   }
   header .contaner .links .card .purchases {
-    width: 50%;
+    width: 83%;
   }
 }
 /* end header */
@@ -438,7 +565,7 @@ header .contaner .links .card .purchases p {
   margin-bottom: 10px;
 }
 
-.product .contaner .cards .card a button {
+.product .contaner .cards .card button {
   background-color: var(--main-color);
   border: 0px;
   margin-top: 10px;
@@ -451,12 +578,8 @@ header .contaner .links .card .purchases p {
   transition: 0.3s;
 }
 
-.product .contaner .cards .card a button:hover {
+.product .contaner .cards .card button:hover {
   background-color: #2070b1;
-}
-
-.product .contaner .cards .card a {
-  text-decoration: none;
 }
 
 .product .contaner .cards i {
