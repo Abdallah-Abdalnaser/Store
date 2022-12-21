@@ -44,7 +44,7 @@ bar.addEventListener("click",function(i){
       bar.classList.toggle("hidden");
     };
   });
-// solve problem in responsef
+// solve problem in responsef//
 window.addEventListener("resize",function(){
   if (innerWidth > 700) {
     ulMenu.style.transform="rotateX(90deg)";
@@ -56,7 +56,7 @@ window.addEventListener("resize",function(){
     bar.style.color="black";
   };
 });
-// cart Shopping
+// cart Shopping//
 cart.addEventListener("click",function(i) {
   if (i.target.classList.contains("fa-cart-shopping")) {
     if (!i.target.classList.contains("showCart")) {
@@ -74,7 +74,6 @@ cart.addEventListener("click",function(i) {
     cart.classList.toggle("showCart");
   }
 });
-// Card shopping
 // addCard Button
 let addCard = document.querySelectorAll(".product .contaner .cards .card button");
 let addCardArray = Array.from(addCard);
@@ -147,6 +146,7 @@ addCardArray.forEach(function(i,index) {
     addProductToCard(productNameArray[index].innerHTML,price,srcImgArray[index].getAttribute("src"));
   }
 });
+// addProductToCard
 function addProductToCard(productName,productPrice,imgSrc) {
   //create Object
   let yourChosse ={
@@ -242,9 +242,7 @@ function addToBody(Array) {
   } else {
     document.getElementById("NOP").style.display="flex";
   }
-
 }
-
 // addtolocalstorage
 function addtolocalstorage(Chosse) {
   window.localStorage.setItem("product",JSON.stringify(Chosse));
