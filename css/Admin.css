@@ -1,0 +1,246 @@
+.fa-right-from-bracket {
+  font-size: 20px;
+  padding: 15px 0px;
+  cursor:pointer;
+  transition:color 0.3s;
+}
+
+.fa-right-from-bracket:hover {
+  color: red;
+}
+
+.details .contaner {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.details .contaner table {
+  width: 100%;
+  background-color: white;
+  border-spacing: 0px;
+  border-left: 1px solid #ccc;
+
+}
+
+.details .contaner table thead{
+  background-color: #ccc;
+}
+
+.details .contaner table tr td {
+  text-align: center;
+  padding: 10px;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.details .contaner table tr td img {
+  width: 100px;
+}
+
+.details .contaner table tr td .update-delet button {
+  padding: 5px 15px;
+  color: white;
+  background-color: #2196f3;
+  border: 0px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.details .contaner table tr td .update-delet button:last-of-type {
+  background-color: red;
+  margin-left: 15px;
+}
+
+.details .contaner table tr td .update-delet button:first-of-type:hover {
+  background-color: #206ead;
+}
+
+.details .contaner table tr td .update-delet button:last-of-type:hover {
+  background-color: rgb(177, 30, 30);
+}
+
+.details .contaner table tr td .update-delet button a {
+  text-decoration: none;
+  color: white;
+}
+
+@media (max-width:594px) {
+  .details .contaner table tr td .update-delet {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .details .contaner table tr td .update-delet button:last-of-type {
+    margin-left: 0px;
+    margin-top: 5px;
+  }
+}
+
+.details .contaner > button {
+  background-color: #2196f3;
+  color: white;
+  border: 0px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  float: right;
+  transition: 0.3s;
+}
+
+.details .contaner > button > a {
+  color: white;
+  text-decoration: none;
+}
+
+.details .contaner > button:hover {
+  background-color: #206ead;
+}
+
+/* popup window */
+
+.new {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: rgba(204, 204, 204, 0.459);
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.new form {
+  background-color: white;
+  padding: 15px;
+  width: 50%;
+  border-radius: 5px;
+}
+
+@media (max-width:783px) {
+  .new form {
+    width: 90%;
+  }
+}
+
+.new form .Add i {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transform: 0.3s;
+}
+
+.new form .Add i:hover {
+  color: #2196f3;
+}
+
+[type="file"] {
+  margin-bottom: 15px;
+}
+
+
+#type {
+  width: 100%;
+  border: 1px solid #777;
+  border-radius: 5px;
+  padding: 0px 5px;
+  outline: 0px;
+}
+
+.new form .Add .image {
+  display: flex;
+  flex-direction: column;
+
+  /* align-items: flex-end; */
+  /* background-color: #eee; */
+}
+
+.new form .Add .image img {
+  width: 150px;
+}
+
+.new form .Add .image input {
+  border: 0px;
+  margin-bottom: 0px;
+  /* margin-left: 15px; */
+}
+
+.new form .Add .image input:checked {
+  border: 0px;
+  outline: 0px;
+}
+
+.new form .Add div {
+  margin-bottom: 10px;
+}
+
+.new form .Add div label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.new form .Add div input {
+  padding:5px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #777;
+  outline: 0px;
+  transition: 0.3s;
+}
+
+.new form .Add div input:focus {
+  border: 1px solid #2196f3;
+}
+
+.new form .Add div input::placeholder {
+  color: #777;
+  font-size: 14px;
+}
+
+.new form .Add div textarea {
+  width: 100%;
+  height: 150px;
+  padding:5px;
+  border-radius: 5px;
+  border: 1px solid #777;
+  resize: none;
+  outline: 0px;
+  transition: 0.3s;
+}
+
+.new form .Add div textarea:focus {
+  border: 1px solid #2196f3;
+}
+
+.new form .Add div textarea::placeholder {
+  color: #777;
+  font-size: 14px;
+}
+
+.new form .Add button {
+  width: 100%;
+  background-color: #2196f3;
+  color: white;
+  border: 0px;
+  padding: 5px 0px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #2196f3;
+  transition: 0.3s;
+}
+
+.new form .Add button > a {
+  color: white;
+  text-decoration: none;
+}
+
+.new form .Add button:hover {
+  background-color: #206ead;
+}
