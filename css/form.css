@@ -1,0 +1,161 @@
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+}
+
+.contaner {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px;
+}
+
+@media (min-width:787px) {
+    .contaner {
+        width: 755px;
+    }
+}
+
+@media (min-width:992px) {
+    .contaner {
+        width: 970px;
+    }
+}
+
+@media (min-width:1200px) {
+    .contaner {
+        width: 1190px;
+    }
+}
+
+section .contaner > h1 {
+    color: #2196f3;
+    margin: 0;
+    font-size: 37px;
+    font-weight: 800;
+    padding-top: 15px;
+}
+
+section {
+    background-image: url(../image/back-ground.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+section .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #eee;
+    z-index: -1;
+}
+
+section form {
+    position:absolute;
+    width: fit-content;
+    z-index: 1;
+    background-color: rgb(88 88 88 / 96%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    padding:  20px 40px;
+    border-radius: 5px;
+    width: 34%;
+}
+
+@media (max-width:897px) {
+    section form {
+        width: 50% !important;
+    }
+}
+
+@media (max-width:615px) {
+    section form {
+        width: 70% !important;
+    }
+}
+
+@media (max-width:438px) {
+    section form {
+        width: 90% !important;
+    }
+}
+
+section form > h1 {
+    color: #2196f3;
+    /* text-align: center; */
+    margin-bottom: 25px;
+}
+
+section form div input {
+    position: relative;
+    width: 100%;
+    border: 0;
+    margin-bottom: 28px;
+    margin-right: 7px;
+    background-color: #e9e9e9;
+    outline: 0;
+    border-radius: 5px;
+    font-size: 16px;
+    color: black;
+    padding: 7px 0px 7px 7px;
+    transition: 0.3s;
+}
+
+section form div input:focus {
+    border: 1px solid #2195f3a1;
+}
+
+@media (max-width:768px) {
+    section form label {
+        transform: translate(12%, 62%) !important;
+        font-size: 15px;
+    }
+}
+
+section form label {
+    position: absolute;
+    z-index: 1;
+    color: #8c8c8c;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+section form div:nth-of-type(4) label {
+    transform:translate(22%, 50%) !important;
+}
+
+section form div:last-of-type input {
+    padding: 6px 14px;
+    margin-right: 12px;
+    color: white;
+    background-color: #2196f3;
+    border: 0;
+    font-weight: 600;
+    border-radius: 5px;
+    outline: 0;
+    cursor: pointer;
+    width: 98px;
+    transition: 0.3s;
+}
+
+section form div:last-of-type input:hover {
+    border:2px solid#2196f3;
+    background-color: rgba(0, 0, 0, 0.281);
+}
+
+section form div:last-of-type {
+    text-align: center;
+    margin-top: 13px;
+}
