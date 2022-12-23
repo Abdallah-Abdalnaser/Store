@@ -17,8 +17,6 @@
     }
   }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +47,7 @@
     <form method="post" action="">
       <div class="Add">
         <div class="image">
-          <img src="image/noimage.jpg" alt="">
+          <img src="image/noimage.jpg" alt="" >
           <input type="file" name="image">
         </div>
         <div>
