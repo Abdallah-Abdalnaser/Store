@@ -1,13 +1,21 @@
 <?php
   include 'conection.php';
   $id=$_GET['updateid'];
+  $sql= "select * from categories where Id =$id";
+  $result=mysqli_query($con,$sql);
+  $row=mysqli_fetch_assoc($result);
+  $image=$row['Image'];
+  $name=$row['Name'];
+  $type=$row['Type'];
+  $price=$row['Price'];
+  $description=$row['Description'];
   if (isset($_POST['update'])) {
     $Image=$_POST['image'];
     $Name=$_POST['name'];
     $Type=$_POST['type'];
     $Price=$_POST['price'];
     $Description=$_POST['description'];
-    $sql="update `categories` set Id=$id,Image='image/$Image',Name='$Name',Type='$Type',Description='$Description' where id = $id";
+    $sql="update `categories` set Id=$id,Image='image/$Image',Name='$Name',Type='$Type',Price='$Price',Description='$Description' where id = $id";
     $result = mysqli_query($con,$sql);
     if ($result) {
       header('location:Admin.php');
@@ -16,12 +24,6 @@
     }
   }
 ?>
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,12 +54,12 @@
     <form method="post" action="">
       <div class="Add">
         <div class="image">
-          <img src="image/noimage.jpg" alt="">
-          <input type="file" name="image">
+          <img src="<?php echo $image?>" alt="<?php echo $image?>">
+          <input type="file" name="image" selected="<?php echo $image?>">
         </div>
         <div>
           <label for="name">Name</label>
-          <input type="text" placeholder="Name" name="name" id="name">
+          <input type="text" placeholder="Name" name="name" id="name" value="<?php echo $name?>">
         </div>
         <div>
           <label for="type">type</label>
@@ -72,11 +74,11 @@
         </div>
         <div>
           <label for="price">Price</label>
-          <input type="text" placeholder="price" name="price" id="price">
+          <input type="text" placeholder="price" name="price" id="price" value=<?php echo $price?>>
         </div>
         <div>
           <label for="description">Description</label>
-          <textarea id="description" placeholder="Enter the description" name="description"></textarea>
+          <textarea id="description" placeholder="Enter the description" name="description"><?php echo $description?></textarea>
         </div>
         <button name="update">Update</button>
       </div>
