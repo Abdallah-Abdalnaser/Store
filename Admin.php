@@ -27,8 +27,8 @@
   <!-- start header -->
   <header>
     <div class="contaner">
-      <h1><a href="index.html">Store</a></h1>
-      <i class="fa-solid fa-right-from-bracket"></i>
+      <h1><a href="home.php">Store</a></h1>
+      <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
     </div>
   </header>
   <!-- end header -->
@@ -40,13 +40,13 @@
             <td>Image</td>
             <td>Name</td>
             <td>Price</td>
-            <td>Update & Delet</td>
+            <td>Update & Delete</td>
           </tr>
         </thead>
         <tbody>
           <?php
             include 'conection.php';
-            $sql="select * from `categories`";
+            $sql="select * from categories";
             $result2= mysqli_query($con,$sql);
             if($result2) {
               while ($row=mysqli_fetch_assoc($result2)) {
